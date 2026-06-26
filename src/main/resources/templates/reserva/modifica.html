@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{general/fragmentos :: head}"></head>
+
+    <body>
+
+        <header th:replace="~{general/fragmentos :: header}"></header>
+        <nav th:replace="~{general/fragmentos :: navbar}"></nav>
+
+        <main class="container mt-5">
+
+            <div class="row justify-content-center">
+                <div class="col-md-7">
+
+                    <div class="card shadow">
+                        <div class="card-header bg-warning text-dark">
+                            <h4 class="mb-0">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                                Modificar reserva
+                            </h4>
+                        </div>
+
+                        <div class="card-body">
+
+                            <form th:action="@{/reserva/guardar}" th:object="${reserva}" method="post">
+
+                                <input type="hidden" th:field="*{id}">
+
+                                <div class="mb-3">
+                                    <label class="form-label">Nombre del cliente</label>
+                                    <input type="text" class="form-control" th:field="*{nombreCliente}" required>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">Fecha</label>
+                                    <input type="date" class="form-control" th:field="*{fecha}" required>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">Servicio</label>
+                                    <select class="form-select" th:field="*{servicio.id}" required>
+                                        <option th:each="servicio : ${servicios}"
+                                                th:value="${servicio.id}"
+                                                th:text="${servicio.nombre}">
+                                        </option>
+                                    </select>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fa-solid fa-save"></i>
+                                    Guardar cambios
+                                </button>
+
+                                <a th:href="@{/reserva/listado}" class="btn btn-secondary">
+                                    Cancelar
+                                </a>
+
+                            </form>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </main>
+
+        <footer th:replace="~{general/fragmentos :: footer}"></footer>
+
+    </body>
+</html>

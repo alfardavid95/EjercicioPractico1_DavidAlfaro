@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{general/fragmentos :: head}"></head>
+
+<body>
+
+<header th:replace="~{general/fragmentos :: header}"></header>
+<nav th:replace="~{general/fragmentos :: navbar}"></nav>
+
+<main class="container mt-5">
+
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="mb-0">
+                        <i class="fa-solid fa-envelope"></i>
+                        Contacto, quejas y sugerencias
+                    </h3>
+                </div>
+
+                <div class="card-body">
+
+                    <div th:if="${mensaje}" class="alert alert-success" th:text="${mensaje}"></div>
+
+                    <p>
+                        Utilizá este formulario para enviarnos tus consultas,
+                        quejas o sugerencias sobre nuestros servicios.
+                    </p>
+
+                    <form th:action="@{/contacto/enviar}" method="get">
+
+                        <div class="mb-3">
+                            <label class="form-label">Nombre completo</label>
+                            <input type="text" class="form-control" name="nombre"
+                                   placeholder="Ingrese su nombre" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Correo electrónico</label>
+                            <input type="email" class="form-control" name="correo"
+                                   placeholder="correo@ejemplo.com" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Mensaje</label>
+                            <textarea class="form-control" name="mensaje" rows="5"
+                                      placeholder="Escriba su comentario" required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fa-solid fa-paper-plane"></i>
+                            Enviar mensaje
+                        </button>
+
+                        <a th:href="@{/}" class="btn btn-secondary">
+                            Volver al inicio
+                        </a>
+
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</main>
+
+<footer th:replace="~{general/fragmentos :: footer}"></footer>
+
+</body>
+</html>

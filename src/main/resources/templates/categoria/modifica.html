@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{general/fragmentos :: head}"></head>
+
+<body>
+
+<header th:replace="~{general/fragmentos :: header}"></header>
+<nav th:replace="~{general/fragmentos :: navbar}"></nav>
+
+<main class="container mt-5">
+
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+
+            <div class="card shadow">
+                <div class="card-header bg-warning text-dark">
+                    <h4 class="mb-0">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                        Modificar categoría
+                    </h4>
+                </div>
+
+                <div class="card-body">
+
+                    <form th:action="@{/categoria/guardar}" th:object="${categoria}" method="post">
+
+                        <input type="hidden" th:field="*{id}">
+
+                        <div class="mb-3">
+                            <label class="form-label">Nombre de la categoría</label>
+                            <input type="text" class="form-control" th:field="*{nombre}" required>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fa-solid fa-save"></i>
+                            Guardar cambios
+                        </button>
+
+                        <a th:href="@{/categoria/listado}" class="btn btn-secondary">
+                            Cancelar
+                        </a>
+
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</main>
+
+<footer th:replace="~{general/fragmentos :: footer}"></footer>
+
+</body>
+</html>

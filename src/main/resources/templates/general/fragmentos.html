@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+    <head th:fragment="head">
+        <meta charset="UTF-8">
+        <title>Gimnasio Fitness</title>
+        <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+        <link th:href="@{/webjars/font-awesome/css/all.min.css}" rel="stylesheet">
+    </head>
+
+    <body>
+
+        <header th:fragment="header" class="bg-dark text-white py-4">
+            <div class="container">
+                <h1 class="mb-0">
+                    <i class="fa-solid fa-dumbbell"></i>
+                    Gimnasio Fitness Center
+                </h1>
+                <p class="mb-0">Entrenamiento, salud y bienestar en un solo lugar</p>
+            </div>
+        </header>
+
+        <nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" th:href="@{/}">Fitness Center</a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#menuPrincipal">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="menuPrincipal">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/}">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/categoria/listado}">Categorías</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/servicio/listado}">Servicios</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/reserva/listado}">Reservas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/contacto}">Contacto</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <footer th:fragment="footer" class="bg-dark text-white text-center py-3 mt-5">
+            <div class="container">
+                <p class="mb-0">
+                    &copy; 2026 Gimnasio Fitness Center - Caso Práctico 1 - David Alfaro Cordero
+                </p>
+            </div>
+
+            <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+            <script th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
+        </footer>
+
+    </body>
+</html>
